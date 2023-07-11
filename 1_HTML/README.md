@@ -123,3 +123,48 @@
 ```
 - keywords를 사용함으로 옛날에는 검색되게끔 했지만 과한 키워드 추가로
   현재는 검색 엔진에서 사용하지 않는다.(구글은 가능)
+
+## hn(Heading)
+- 제목 표시
+- h1(큰 제목) ~ h6(작은 제목)
+- 줄 바꿈 + 볼드체 적용
+
+## p(Paragraph)
+- 문단 구분
+
+## br(Break)
+- 줄 바꿈
+
+## hr(Horizontal)
+- 수평 줄
+
+## pre(Preformat)
+- 입력하는 대로 화면에 표시
+
+## b(Bold), strong
+- 글자를 강조
+- 굵게 표시
+
+## i(Itelic), em(Emphasized)
+- 글자를 기울여서 표시
+
+## u(Underline)
+- 글자에 밑줄
+
+## s(Strikethrough)
+- 취소선
+
+## mark
+- 형광펜
+
+## small
+- 글자를 작게
+
+## sup(Superscript Text), sub(Subscript Text)
+- 위/아래 첨자
+
+## q, blockquote
+- 글을 인용할 경우
+
+## abbr(Abbreviation)
+- 약어 표시
