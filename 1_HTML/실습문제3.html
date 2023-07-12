@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제3</title>
+</head>
+<body>
+    <h1>주문하기</h1>
+    <form method="POST"></form>
+    <form name="user_name" method="GET">
+       <label>고객명 : <input type="text" name="user_name">
+    </form>
+
+    <form name="phone" method="GET">
+        <label>전화번호 : <input type="text" name="phone">
+    </form>
+
+    <form name="email" method="GET">
+        <label>E-mail : <input type="text" name="email">
+    </form>
+
+    <br><br><br>
+
+        <form>
+            <fieldset>
+                <legend>피자 사이즈</legend>
+                <input type="radio" name="pizzasize" id="pizzasize1" value="small"> <label for="pizzasize1">Small</label>
+                <input type="radio" name="pizzasize" id="pizzasize2" value="medium"> <label for="pizzasize2">Medium</label>
+                <input type="radio" name="pizzasize" id="pizzasize3" value="large"> <label for="pizzasize3">Large</label>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend>토핑 선택</legend>
+                <input type="checkbox" name="selecttoping" id="selecttoping1" value="bacon"> <label for="selecttoping1">베이컨</label>
+                <input type="checkbox" name="selecttoping" id="selecttoping2" value="cheese"> <label for="selecttoping2">치즈</label>
+                <input type="checkbox" name="selecttoping" id="selecttoping3" value="onion"> <label for="selecttoping3">양파</label>
+                <input type="checkbox" name="selecttoping" id="selecttoping4" value="mushroom"> <label for="selecttoping4">버섯</label>
+            </fieldset>
+
+             <br><br>
+
+
+            <label for="time">희망 배송 시간 : </label>
+            <input type="time" name="time" id="time" value="datetime">
+
+            <br><br>
+
+            <textarea name="textarea" id="textarea" cols="40" rows="20" style="resize:none;"></textarea>
+            <br><br>
+            <button>전송</button>
+        </form>
+</body>
+</html>

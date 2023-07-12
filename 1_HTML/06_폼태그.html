@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 태그</title>
+</head>
+<body>
+    <h2>폼 태그의 기본 구조</h2>
+
+    <h3>검색 폼</h3>
+    <form name="search_form" method="GET">
+       <label>검색할 내용 : <input type="text" name="search">
+    </label>
+       <input type="submit" value="검색">
+    </form>
+
+    <h3>회원가입 폼</h3>
+    <form name="signUp_form" method="POST">
+        <fieldset>
+            <legend>회원정보</legend>
+
+            <label for="userId">아이디 : </label>
+            <input type="text" id="userId" name="userId">
+
+            <br><br>
+
+            <label for="userPwd">패스워드 : </label>
+            <input type="password" id="userPwd" name="userPwd" placeholder="패스워드를 입력해 주세요.">
+        </fieldset>
+        <fieldset>
+            <legend>배송정보</legend>
+            <label for="userName">수령인</label>
+            <input type="text" id="userName" name="userName">
+
+            <br><br>
+
+            <label for="addr">주소: </label>
+            <input type="text" id="addr" name="addr">
+        </fieldset>
+
+        <input type="submit" value="회원가입">
+
+    </form>
+
+    <br><br>
+
+    <h2>input 태그</h2>
+    <h3>type="hidden"</h3>
+    <form>
+        <input type="hidden" name="hiddenValue" value="1234">
+        <input type="submit" value="전송">
+    </form>
+
+    <h3>type="text|password|search|url|email|tel"</h3>
+    <form>
+        <label for="id">아이디: </label>
+        <input type="text" name="id" id="id" required autofocus>
+
+        <br><br>
+
+        <label for="pwd">패스워드: </label>
+        <input type="password" name="pwd" id="pwd">
+
+        <br><br>
+        <label for="search">검색 : </label>
+        <input type="search" name="search" id="search" value="google" readonly>
+
+        <br><br>
+
+        <label for="website">웹사이트 : </label>
+        <input type="url" name="website" id="website" placeholder="URL을 입력해주세요">
+
+        <br><br>
+
+        <label for="email">이메일 : </label>
+        <input type="email" name="email" id="email">
+        
+        <br><br>
+
+        <label for="phone">전화번호 : </label>
+        <input type="tel" name="phone" id="phone">
+
+        <br><br>
+
+        <input type="submit" value="전송" disabledz>
+        <input type="reset" value="초기화">
+
+    </form>
+
+        <h3>type="radio|checkbox"</h3>
+        <form>
+            <fieldset>
+                <legend>성별</legend>
+                <input type="radio" name="gender" value="M" id="gender"> <label for="gender">남자</label>
+                <input type="radio" name="gender" id="gender2" checked value="F"> <label for="gender2">여자</label>
+            </fieldset>
+            <fieldset>
+                <legend>취미</legend>
+                <input type="checkbox" name="hobby" id="hobby1" value="game"><label for="hobby1"> 게임</label>
+                <input type="checkbox" name="hobby" id="hobby2" value="movie"><label for="hobby2"> 영화감상</label>
+                <input type="checkbox" name="hobby" id="hobby3" value="animation"><label for="hobby3"> 만화보기</label>
+            </fieldset>
+            <br>
+            <input type="submit" value="전송">
+        </form>
+
+        <h3>type="number|range"</h3>
+        <form>
+            <label for="amount">수량 : </label>
+            <input type="number" name="amount" id="amount" min="0" max="10" step="2" value="0">
+
+             <br><br>
+
+            <label for="point">포인트 : </label>
+            <input type="range" name="point" id="point" value="30" min="0" max="100" step="10">
+
+            <input type="submit" value="전송">
+        </form>
+
+        <h3>type="color|file"</h3>
+
+        <form>
+            <label for="color">색상 : </label>
+            <input type="color" name="color" id="color" value="#ff00ff">
+
+            <br><br>
+
+            <label for="upload">파일 선택 : </label>
+            <input type="file" name="upload" id="upload" multiple>
+
+            <input type="submit" value="전송">
+        </form>
+
+        <h3>type="date|month|week|time|datetime|datetime-local"</h3>
+        <form>
+            <label for="date">date : </label>
+            <input type="date" name="date" id="date" value="2023-07-31" min="2023-07-12" max="2023-08-12">
+
+            <br><br>
+            
+            <label for="month">month : </label>
+            <input type="month" name="month" id="month" value="2023-08" min="2023-06" max="2024-02">
+          
+            <br><br>
+
+            <label for="week">week : </label>
+            <input type="week" name="week" id="week" value="2023-W10" min="2023-W03" max="2024-W01">
+
+            <br><br>
+
+            <label for="time">time : </label>
+            <input type="time" name="time" id="time" value="17:50:00">
+
+            <br><br>
+            <!-- 크롬, 익스플로어, 엣지 지원 X -->
+            <label for="datetime">datetime : </label>
+            <input type="datetime" name="datetime" id="datetime">
+
+            <br><br>
+
+            <label for="datetime-local">datetime-local: </label>
+            <input type="datetime-local" name="datetime-local" id="datetime-local">
+
+            <button>전송</button>
+            <button type="submit">전송</button>
+            <button type="reset">초기화</button>
+            <button type="button" onclick="alert('버튼 클릭!!')">버튼</button>
+        </form>
+
+        <br><br>
+
+        <h2>select 태그</h2>
+        <form>
+            <label for="national">국적: </label>
+            <select name="national" id="national">
+                <optgroup label="아시아">
+                    <option value="kr">한국</option>
+                    <option value="ch">중국</option>
+                    <option value="jp">일본</option>
+                </optgroup>
+               <optgroup label="기타">
+                <option value="us">미국</option>
+                <option value="fr">프랑스</option>
+               </optgroup>
+               <option selected disabled>-------</option>
+               
+            </select>
+            <button>전송</button>
+        </form>
+
+        <h2>textarea 태그</h2>
+        <form>
+            <textarea name="textarea" id="textarea" cols="30" rows="10" style="resize:none;"></textarea>
+            <br><br>
+            <button>전송</button>
+        </form>
+</body>
+</html>
+
