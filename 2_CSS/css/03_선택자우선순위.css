@@ -1,0 +1,18 @@
+#id1 {
+    background: pink;
+}
+
+/* 클래스 선택자로 배경색은 yellowgreen, 글자색은 red */
+.class1 {
+    background: yellowgreen;
+    color: red;
+
+}
+div {
+    width: 200px;
+    height: 200px;
+    color: white;
+    background: teal !important;
+}
+
+
