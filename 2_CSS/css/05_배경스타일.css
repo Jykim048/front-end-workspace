@@ -1,0 +1,46 @@
+/* background-color */
+#div-bg {
+    background-color: darkorange;
+}
+
+/* background-clip */
+.div-test {
+    background-color: yellow;
+    border: 10px dashed black;
+    padding: 20px;
+    margin: 20px;
+}
+#div1 {
+    background-clip: border-box;
+}
+#div2 {
+    background-clip: padding-box;
+}
+#div3 {
+    background-clip: content-box;
+}
+
+/* background */
+#test {
+    border: 1px solid black;
+    height: 800px;
+
+    background-image: url("../../resources/cake.jpg");
+
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+
+    background-size: 400px 200px;
+    background-size: 50% 50%;
+    /* background-size: contain; */
+    background-size: cover;
+    
+    background-position: 50px 25px;
+    background-position: left bottom;
+    background-position: 50%;
+    background-position: center;
+
+    background-attachment: fixed;
+
+}

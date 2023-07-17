@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 스타일</title>
+    <link rel="stylesheet" href="css/06_레이아웃스타일.css">
+</head>
+<body>
+    <h2>박스 모델</h2>
+    <h3>width, height</h3>
+    <h4>고정크기</h4>
+    <div class="size-test" id="fixed-size"></div>
+
+    <h4>가변크기</h4>
+    <div class="size-test" id="variable-size"></div>
+
+    <h3>display</h3>
+    <h4>블록 레벨 요소를 인라인 레벨 요소로 변경</h4>
+    <div class="display display-inline">1 번째 영역</div>
+    <div class="display display-inline">2 번째 영역</div>
+    <div class="display display-inline">3 번째 영역</div>
+    <div class="display display-inline">4 번째 영역</div>
+    <div class="display display-inline">5 번째 영역</div>
+
+    <h4>인라인 레벨 요소를 블록 레벨 요소로 변경</h4>
+    <span class="display display-block">1 번째 영역</span>
+    <span class="display display-block">2 번째 영역</span>
+    <span class="display display-block">3 번째 영역</span>
+    <span class="display display-block">4 번째 영역</span>
+    <span class="display display-block">5 번째 영역</span>
+
+    <h4>블록 레벨 요소를 인라인 블록 레벨 요소로 변경</h4>
+    <div class="display display-inline-block">1 번째 영역</div>
+    <div class="display display-inline-block">2 번째 영역</div>
+    <div class="display display-inline-block">3 번째 영역</div>
+    <div class="display display-inline-block">4 번째 영역</div>
+    <div class="display display-inline-block">5 번째 영역</div>
+
+    <h3>padding, margin</h3>
+    <div class="space">기준 div</div>
+
+    <h4>padding</h4>
+    <div class="space" id="padding1">전체 padding</div>
+    <br>
+    <div class="space" id="padding2">부분 padding</div>
+
+    <h4>margin</h4>
+    <div class="space" id="margin1">전체 margin</div>
+    <div class="space" id="margin2">부분 margin</div>
+
+    <h2>테두리 스타일</h2>
+    <div class="border" id="border1"></div>
+    <div class="border" id="border2"></div>
+    <div class="border" id="border3"></div>
+    <div class="border" id="border4"></div>
+
+    <h2>포지셔닝</h2>
+    <h3>box-sizing</h3>
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+
+    <h3>float, clear</h3>
+    <div class="float">001</div>
+    <div class="float">002</div>
+    <div class="float">003</div>
+    <div class="float">004</div>
+    <div class="float">005</div>
+
+    <h3 style="clear:both;">position</h3>
+
+    <div id="outer">
+        <div id="first"></div>
+        <div id="second"></div>
+    </div>
+
+    <div id="fixed"></div>
+
+    <h3>visibility</h3>
+
+    <div class="visibility" id="visibility1"></div>
+    <div class="visibility" id="visibility2"></div>
+    <div class="visibility" id="visibility3"></div>
+
+    <h3>z-index</h3>
+
+    <div id="z-outer">
+        <div class="z-index" id="z-index1"></div>
+        <div class="z-index" id="z-index2"></div>
+        <div class="z-index" id="z-index3"></div>
+    </div>
+</body>
+</html>
