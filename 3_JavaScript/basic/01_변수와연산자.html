@@ -31,5 +31,72 @@
     console.log(c);
     console.log(typeof c);
     </script>
+
+      <!-- 기본 데이터 타입 -->
+      <!-- 문자열 -->
+      <script>
+      let message = '난 "기린"이라고 해';
+      message = "난 \"기린\"이라고 해";
+      console.log(message);
+      console.log(message[3]);
+      console.log(message.length);
+      console.log("안녕?", message);
+      console.log("안녕?" + message);
+      console.log(`안녕? ${message}`);
+
+      const name = '기린이';
+      const age = 2;
+      console.log(`안녕? 내 이름은 ${name}이고, 나이는 ${age}살이야`);
+      </script>
+
+      <!-- 숫자 -->
+      <script>
+        const num1 = 10;
+        const num2 = 3;
+        console.log(num1 + num2);
+        console.log(num1 - num2);
+        console.log(num1 * num2);
+        console.log(num1 / num2);
+        console.log(num1 % num2);
+        console.log(num1 ** num2);
+      </script>
+
+      <!-- undefined, null -->
+      <script>
+        let test;
+        console.log(test);
+
+        test = null;
+        console.log(test);
+      </script>
+
+      <!-- Boolean과 연산자 : 비교 연산자 -->
+      <script>
+        let num3 = 100;
+        let num4 = 200;
+        num4 = '100';
+        console.log(num3 < num4);
+        console.log(num3 <= num4);
+        console.log(num3 == num4); // true
+        console.log(num3 != num4); // false
+
+        console.log(num3 === num4); // 데이터 타입까지 체크
+        console.log(num3 !== num4);
+      </script>
+
+      <!-- 논리 연산자 -->
+      <script>
+        const a1 = 100;
+        const b1 = 200;
+
+        console.log(a1 < 200 && a1 == 100); // true
+        console.log(a1 > 200 && a1 == 100); // false
+        console.log(a1 > 200 || a1 == 100); // true
+        console.log(a1 > 200 || a1 != 100); // false
+
+        console.log(!true); // false
+        console.log(a1 > b1); // false
+        console.log(!!(a1>b1)); // false
+      </script>
 </body> 
 </html>

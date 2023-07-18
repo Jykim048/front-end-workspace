@@ -3,6 +3,9 @@
 - [선택자](#선택자)
 - [텍스트 스타일](#텍스트-스타일)
 - [색상 및 배경 스타일](#색상-및-배경-스타일)
+- [레이아웃 스타일](#레이아웃-스타일)
+- [반응형 웹](#반응형-웹)
+- [플렉스 박스](#flexflexible-box-flexbox)
 
 ## CSS(Cascading Style Sheet)
 
@@ -768,4 +771,206 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha);
 선택자 {
     z-index: 값;
 }
+```
+
+<br>
+
+[위로 이동](#목차)
+
+# 반응형 웹
+
+- 구간 별 페이지 제작 : pc, tablet, mobile
+- viewport : 스마트폰 화면에서 실제 내용이 표시되는 영역
+
+```html
+<meta name="viewport" content="속성1=값1, 속성2=값2, ...">
+```
+
+- width : 뷰포트 너비 (device-width or 크기)
+- height : 뷰포트 높이 (device-height or 크기)
+- user-scalable : 확대/축소 가능 여부 (yes or no, yes : 기본값)
+- initial-scale : 초기 확대/축소 값 (1 ~ 10, 1 : 기본값)
+- minimum-scale : 최소 확대/축소 값 (0 ~ 10, 0.25 : 기본값)
+- maximum-scale : 최대 확대/축소 값 (0 ~ 10, 1.6 : 기본값)
+
+## 미디어 쿼리 (Media Queries)
+
+- 사이트에 접속하는 장치에 따라 특정한 CSS 스타일을 적용
+
+```css
+@media 미디어유형 [and 조건] ... {
+
+}
+
+@media screen and (min-width: 200px) and (max-width: 360px) {
+    ...
+}
+
+@media screen and (min-width: 700px) {
+
+}
+```
+<br>
+
+# Flex(Flexible Box, Flexbox)
+
+- CSS 레이아웃 모델로 화면 크기에 따라 레이아웃의 배치나 크기를 조절할 때 편리하게 사용
+
+```html
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+```
+
+## display: flex;
+
+- Flex 컨테이너에 display:flex;를 적용하면서 시작
+
+```css
+.container {
+    display: flex;
+}
+```
+
+## flex-direction
+
+- 배치 방향 설정
+- 아이템들이 배치되는 메인 축의 방향을 결정하는 속성
+
+```css
+.container {
+    flex-direction: row or column or row-reverse or column-reverse;
+}
+```
+- row : 왼쪽부터 순차적으로 배치 (기본값)
+- row-reverse : 오른쪽으로부터 순차적으로 배치
+- column : 위에서 아래로 순차적으로 배치
+- column-reverse : 아래에서 위로 순차적으로 배치
+
+## flex-wrap
+
+- 아이템 줄바꿈을 어떻게 할지 결정하는 속성
+
+```css
+.container {
+    flex-wrap: nowrap or wrap or wrap-reverse;
+}
+```
+
+- nowrap : 줄바꿈을 하지 않음 (기본값)
+- wrap : 줄바꿈
+- wrap-reverse : 역순으로 배치 후 줄바꿈
+
+## flex-flow
+
+- flex-direction과 flex-wrap을 한꺼번에 저장할 수 있는 단축 속성
+
+```css
+.container {
+    flex-flow : row wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+```
+
+## justify-content
+
+- 메인축 방향으로 정렬
+
+```css
+.container {
+    justify-content: flex-start or flex-end or center or space-between or space-around or space-evenly;
+}
+```
+
+- flex-start : 아이템들을 시작점으로 정렬 (기본값)
+- flex-end : 아이템들을 끝점으로 정렬
+- center : 아이템들을 가운데로 정렬
+- space-between : 아이템들 사이에 균일한 간격 생성
+- space-around : 각 아이템의 좌우에 균일한 간격 생성
+- space-evenly : 아이템들의 사이와 양 끝에 균일한 간격 생성
+
+## align-items
+
+- 수직축 방향으로 정렬
+
+```css
+.container {
+    align-items: stretch or flex-start or flex-end or center or baseline;
+}
+```
+
+- stretch : 아이템들을 위아래 방향으로 끝까지 늘림 (기본값)
+- flex-start : 아이템들을 위쪽으로 정렬
+- flex-end : 아이템들을 아래쪽으로 정렬
+- center : 아이템들을 중간 정렬
+- baseline : 아이템들을 텍스트 베이스라인 기준으로 정렬
+
+## align-content
+- 여러 행 정렬
+- flex-wrap: wrap;이 설정된 상태에서, 아이템들의 행이 2줄 이상인 경우 수직축 방향 정렬을 결정하는 속성
+
+```css
+.container {
+    align-content: stretch or flex-start or flex-end or center or space-between or space-around or space-evenly;
+}
+```
+
+## flex-basis
+
+- flex 아이템의 기본 크기 설정 (flex-direction이 row일때는 너비, column일때는 높이)
+
+```css
+.item {
+    flex-basis : auto or 0 or 크기;
+}
+```
+
+## flex-grow
+
+- flex-basis의 값보다 커질 수 있는지를 결정하는 속성
+
+```css
+.item {
+    flex-grow: 0 or 숫자;
+}
+```
+
+## flex-shrink
+
+- flex-grow와 쌍을 이루는 속성으로, flex-basis 값보다 작아질 수 있는지를 결정하는 속성
+
+```css
+.item {
+    flex-shrink: 1 or 숫자;
+}
+```
+
+## flex
+
+- flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 단축 속성
+
+```css
+.item {
+    flex: 1; /* flex-grow: 1; flex-shrink: 1; flex-basis: 0; */
+    flex: 1 1 auto; /* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+    flex: 1 500px; /* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
+}
+```
+
+## align-self
+
+- 특정 아이템만 정렬을 따로 정렬하고자 할 때 사용하는 속성
+
+```css
+
+```
+
+## order
+
+- item들의 순서를 바꿀 수 있는 속성
+
+```css
+order : 0 or 숫자;
 ```

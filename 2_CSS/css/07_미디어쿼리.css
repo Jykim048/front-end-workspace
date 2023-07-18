@@ -1,0 +1,74 @@
+body, h3, p {
+    margin: 0;    
+}
+
+.container {
+    background-color: cornflowerblue;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#container-1 {
+    font-size: 0;
+}
+#container-2::after {
+   content: 'Clear!';
+   display: block;
+   clear: both;
+   height:0;
+   visibility: hidden;
+}
+.item {
+    padding: 5%;
+    box-sizing: border-box;
+    
+}
+
+.item-style-1 {
+    background-color: paleturquoise;
+    width: 40%;
+}
+.item-style-2 {
+    background-color: palevioletred;
+    width: 60%;
+
+}
+
+.item-inline-block {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1rem;
+}
+.item-float {
+    float: left;
+}
+footer {
+    background-color: darkgray;
+    padding: 5%;
+    clear: both;
+}
+
+/* 미디어쿼리 */
+.item-mediaquery {
+    width: 100%;
+}
+
+@media screen and (min-width: 700px) {
+    /* .item-mediaquery {
+        background-color: violet;
+    } */
+    .item-style-1 {
+        width: 40%;
+    }
+    .item-style-2 {
+        width: 60%;
+    }
+    .item-mediaquery {
+        float: left;
+    }
+    #container-3::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
