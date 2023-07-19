@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <h1>함수</h1>
+
+    <!-- 선언적 함수 -->
+    <script>
+        function sample() {
+            console.log('ㅋㅋㅋ');
+        }
+    sample();
+
+    function plus(a, b) {
+        return a + b;
+    }
+    console.log(plus(10, 20));
+
+    const plus1 = plus(30, 40);
+    console.log(plus1);
+
+    const sample1 = sample();
+    console.log(sample1); // undefined
+    </script>
+
+    <!-- 변수의 유효범위 (Scope) -->
+    <script>
+    const num1 = 100;
+
+    function sample2() {
+       // const num1 = 200;
+        console.log(num1); // 200 -> 100
+
+        function sample3() {
+            const num2 = 300000;
+        }
+    }
+    console.log(num2); // 에러
+    sample2();
+    </script>
+
+    <script src="js/script.js"></script>
+
+    <!-- 익명 함수 -->
+    <script>
+        const minus = function(a, b) {
+            return a - b;
+        }
+        console.log(minus(70, 30));
+    </script>
+    <!-- 화살표 함수 -->
+    <script>
+        const minus = function(a,b) => return a-b;
+    </script>
+</body>
+</html>

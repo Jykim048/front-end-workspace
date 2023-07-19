@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문</title>
+</head>
+<body>
+    <h1>반복문</h1>
+
+    <!-- for -->
+    <script>
+        // for 사용해서 0~9까지 출력
+        for(let i=0; i<=9; i++);
+    </script>
+
+    <script>
+        const movies = ['미션 임파서블: 데드 레코닝', '엘리멘탈', '밀수', '여름날 우리', '범죄도시 3']
+        console.log(movies);
+
+        // movies 배열에 있는 값을 for문을 이용해 하나씩 출력
+        for(let i=0; i<movies.length; i++) {
+            console.log(movies[i]);
+        }
+    </script>
+
+    <!-- for in -->
+    <script>
+        for(const index in movies) {
+            console.log(movies[index]);
+        }
+    </script>
+
+    <!-- for of -->
+    <script>
+        for(const movie of movies) {
+            console.log(movie);
+        }
+    </script>
+</body>
+</html>
+
+<!-- while -->
+<script>
+    let check = 0;
+    while(confirm('계속 진행하시겠습니까?')) {
+       //check = check + 1;
+       //check += 1;
+       //check++;
+       console.log(++check);
+    }
+</script>
