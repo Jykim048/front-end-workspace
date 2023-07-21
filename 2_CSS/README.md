@@ -6,6 +6,7 @@
 - [레이아웃 스타일](#레이아웃-스타일)
 - [반응형 웹](#반응형-웹)
 - [플렉스 박스](#flexflexible-box-flexbox)
+- [그리드](#grid)
 
 ## CSS(Cascading Style Sheet)
 
@@ -974,3 +975,188 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha);
 ```css
 order : 0 or 숫자;
 ```
+
+<br>
+
+[위로 이동](#목차)
+
+# Grid
+
+- CSS 레이아웃 모델로 한 방향 레이아웃인 플렉스와 달리 두 방향(가로-세로) 레이아웃
+
+```html
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+```
+
+## display: grid;
+
+- Grid 컨테이너에 display: grid;를 적용하면서 시작
+
+```css
+.container {
+    display: grid;
+}
+```
+
+## grid-template-rows, grid-template-columns
+
+- 컨테이너에 Grid 트랙(행 또는 열)의 크기들을 지정해주는 속성
+
+```css
+.container {
+    grid-template-columns: 200px 500px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100px 200px auto;
+}
+```
+
+### auto-fill, auto-fit
+
+- column의 개수를 미리 정하지 않고 설정된 너비가 허용하는 한 최대한 셀을 채움
+- auto-fill은 셀의 개수가 모자라면 공간이 남지만, auto-fit은 채움
+
+## row-gap, column-gap, gap
+
+- 그리드 셀 사이의 간격을 설정하는 속성
+- 예전 브라우저에서는 grid-gap 사용
+
+```css
+.container {
+    row-gap: 10px;
+    column-gap: 20px;
+
+    gap : 10px 20px;
+}
+```
+
+## grid-auto-columns, grid-auto-rows
+
+- 통제를 벗어난 위치에 있는 트랙의 크기를 지정하는 속성
+
+```css
+.container {
+    grid-auto-columns: 200px;
+    grid-auto-rows: 20%;
+}
+```
+
+## grid-column-start, grid-column-end, grid-column, grid-row-start, grid-row-end, grid-row
+
+- 각 셀의 영역을 지정하는 속성
+
+```css
+.item {
+    grid-column: 1/4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    grid-row: 2/4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+} 
+```
+
+## justify-items, align-items
+
+- 셀들의 정렬을 지정하는 속성
+
+```css
+.container {
+    justify-items: start;
+    justify-items: center;
+    justify-items: end;
+}
+```
+
+## justify-self, align-self
+
+- 각 하나의 셀을 정렬을 지정하는 속성
+
+```css
+.item {
+    justify-self: start;
+    justify-self: center;
+    justify-self: end;
+}
+```
+
+# 변형
+
+## transform 
+
+- 사용자의 동작에 따라 크기나 형태가 변경되는 것
+
+```css
+선택자 {
+    transform: 변형함수();
+}
+```
+* 변형함수(3d, X, Y, Z)
+- scale : 지정한 크기만큼 확대/축소하는 함수
+- rotate : 지정한 각도만큼 회전시키는 함수
+- skew : 지정한 각도만큼 비틀어서 왜곡하는 함수
+- translate : x축, y축, z축 방향으로 이동시키는 함수
+
+## transform-origin
+
+- 변형의 기준점을 변경하는 속성
+
+```css
+선택자 {
+    transform-origin: x축 y축 z축;
+}
+```
+
+## transition
+
+- 전환효과
+
+```css
+선택자 {
+    transition: 변환속성 애니메이션시간;
+}
+```
+
+- 변환속성 : 변환할 속성 (all로 지정되면 모든 속성 영향)
+- 애니메이션시간 : 애니메이션 재생 시간(duration) 지정
+
+## animation
+
+- CSS의 속성값 변화를 애니메이션화
+
+```css
+@keyframes 애니메이션이름 {
+    from { 시작 프레임 설정 }
+    to { 끝 프레임 설정 }
+    % { 단위로 지정 가능 }
+}
+
+선택자 {
+    animation: name duration iteration-count timing-function delay direction;
+}
+```
+
+- animation-name : 설정된 keyframe 지정
+- animation-duration : 실행 시간 지정
+- animation-iteration-count : 반복 횟수 지정
+- animation-timing-function : 속도 형태 지정
+- animation-delay : 대기 시간 지정
+- animation-direction : 진행 형태 지정
+
+## backface-visibility
+
+- 요소가 회전하여 뒷면이 보일 경우 표시 여부를 지정하는 속성
+
+```css
+선택자 {
+    backface-visibility: visible or hidden;
+}
+```
+
+- visible : 뒷면이 보이도록 표시 (기본값)
+- hidden : 뒷면이 보이지 않도록 한다.

@@ -1,0 +1,59 @@
+.container {
+    background-color: lightgray;
+
+    /* 1. display: grid; */
+    display: grid;
+
+    /* 2. grid-template-columns */
+    grid-template-columns: 200px 500px 300px;
+    grid-template-columns: 40% 60%;
+    grid-template-columns: 4fr 6fr; /*fraction의 약자*/
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: 200px 1fr 200px; */
+    /* grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+    grid-template-columns: repeat(auto-fit, minmax(20%, auto)); */
+
+    /* row-gap: 20px;
+    column-gap: 30px; */
+    gap: 20px;
+
+   /* 4. auto-rows */
+   grid-template-rows: repeat(2, 150px);
+   grid-auto-rows: 200px;
+
+   /* 5. justify-items */
+   /* justify-items: start;
+   justify-items: center;
+   justify-items: end; */
+
+   align-items: start;
+   align-items: center;
+   align-items: end;
+}
+
+.item {
+    background-color: white;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.item:nth-child(1) {
+   grid-column: 1/4;
+   background-color: aquamarine;
+}
+.item:nth-child(4) {
+   grid-column: 3;
+   grid-row: 2/4; 
+}
+.item:nth-child(6) {
+    justify-self: center;
+    align-self: center;
+}
+.item:nth-child(9) {
+    grid-column: 3;
+    grid-row: 3/5;
+}
+ .item img {
+    height: 95px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <h1>객체(Object)</h1>
+
+    <!-- 객체 생성 -->
+    <script>
+    const person = {};
+    // const person2 = new Object();
+
+    console.log(person);
+
+    person.name = 'aaa';
+    person.age = 9;
+    person.hello = function() {
+        console.log(`안녕? 나는 ${this.name}이고, 나이는 ${this.age}살!`);
+    }
+
+    console.log(person);
+    person.hello();
+    
+    console.log(window.name);
+    //window.alert("!!!!");
+
+    const person2 = {
+        name: 'xxx',
+        age: 15, 
+        hello = function() {
+        console.log(`안녕? 나는 ${this.name}이고, 나이는 ${this.age}살!`);
+    }
+}
+person2.hello();
+
+    </script>
+
+    <!-- 생성자 함수 -->
+    <script>
+     function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.hello = function() {
+            console.log(`안녕? 나는 ${this.name}이고, 나이는 ${this.age}살!`);
+        }
+     }
+     const p1 = new Person('bbb', 2);
+     console.log(p1);
+     p1.hello();
+
+
+     function Person(name, age) {
+        this.name = name;
+        this.age = age;
+     }
+     person2.prototype.hello = function() {
+       console.log(`안녕? 나는 ${this.name}이고, 나이는 ${this.age}살!`);
+     }
+
+     const p2 = new Person2('ccc', 3);
+     console.log(p2);
+     p2.hello();
+    </script>
+
+    <!-- 클래스 -->
+    <script>
+    class Person3 {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        hello() {
+            console.log(`안녕? 나는 ${this.name}이고, 나이는 ${this.age}살!`);
+        }
+        const p3 = new Person3('ddd', 4);
+        constole.log(p3);
+        p3.hello();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <script src="js/01_BOM.js"></script>
+</head>
+<body>
+    <h2>1. window 객체</h2>
+    <h3>1) window.open()</h3>
+    <button onclick="btn1()">실행 확인</button>
+
+    <h3>2) 타이머(Timer)</h3>
+
+    <h4>window.setTimeout()</h4>
+    <button onclick="btn2()">실행 확인</button>
+
+    <h4>window.setInterval()</h4>
+    <button onclick="btn3()">실행 확인</button>
+
+    <hr>
+
+    <h2>2. location 객체</h2>
+
+    <button onclick="btn4()">실행 확인</button>
+
+    <h3>location.reload</h3>
+
+    <button onclick="location.reload">새로고침1</button>
+    <button onclick="location.href=location.href">새로고침2</button>
+    <button onclick="location=location">새로고침3</button>
+
+    <h3>location.href</h3>
+
+    <button onclick="location.href = 'https://naver.com';">네이버로 이동</button>
+    <button onclick="location = 'https://google.com';">구글로 이동</button>
+
+    <h3>location.assign(), location.replace()</h3>
+
+    <button onclick="location.assign('https://naver.com')">네이버로 이동</button>
+    <button onclick="location.replace('https://google.com')">구글로 이동</button>
+
+    <hr>
+
+    <h2>3. history 객체</h2>
+    <button onclick="history.back()">back()</button>
+    <button onclick="history.forward()"></button>
+
+    <button onclick="history.go(-1)">go(-1)</button>
+    <button onclick="history.go(1)">go(1)</button>
+
+    <h2>4. navigator 객체</h2>
+    <button onclick="btn5()">실행 확인</button>
+
+    <h2>5. screen 객체</h2>
+    <button onclick="btn6()">실행 확인</button>
+
+</body>
+</html>
