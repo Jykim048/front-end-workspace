@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       fieldset * {
+        vertical-align: middle;
+       }
+        label {
+            font-weight: bold;
+            width: 70px;
+            display: inline-block;
+            text-align: center;
+            
+        }
+        input[type='text'] {
+            width: 300px;
+        }
+        textarea {
+            width: 300px;
+            resize: none;
+        }
+        button {
+            margin-left: 150px;
+        }
+        thead, tfoot {
+            background-color: orange;
+            color: white;
+            text-align: center;
+        }
+        tbody {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <h1>포트폴리오 문제</h1>
+    <hr />
+    <form action="insert.no" method="post">
+        <fieldset>
+            <legend>공지사항 작성하기</legend>
+            <div>
+                <label for="title">제목</label>
+                <input type="text" placeholder="제목을 입력하시오." 
+                name="title" id="title"
+                required
+                />
+            </div>
+            <div>
+                <label for="content">내용</label>
+                <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하시오."
+                required></textarea>
+            </div>
+            <div>
+                <label for="uploadFile">첨부파일</label>
+                <input type="file" name="uploadFile" id="uploadFile" />
+            </div>
+            <div>
+                <button type="submit">작성하기 </button>
+            </div>
+        </fieldset>
+    </form>
+    <hr />
+    <table border="1">
+        <thead>
+            <tr>
+                <th width="40">번호</th>
+                <th colspan="2">제목</th>
+                <th width="100">작성자</th>
+                <th width="100">작성일</th>
+                <th width="60">조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+            <td>9</td>
+            <td>공지사항 제목 9</td>
+            <td><input type="button" value="바로가기"></td>
+            <td>user01</td>
+            <td>2021-03-29</td>
+            <td>34</td>
+           </tr>
+           <tr>
+            <td>6</td>
+            <td>공지사항 제목 6</td>
+            <td><input type="button" value="바로가기"></td>
+            <td>answ445</td>
+            <td>2021-03-12</td>
+            <td>67</td>
+           </tr>
+           <tr>
+            <td>3</td>
+            <td>공지사항 제목 3</td>
+            <td><input type="button" value="바로가기"></td>
+            <td>testg12</td>
+            <td>2021-03-01</td>
+            <td>98</td>
+           </tr>
+           <tr>
+            <td>2</td>
+            <td>공지사항 제목 2</td>
+            <td><input type="button" value="바로가기"></td>
+            <td>palwe3</td>
+            <td>2021-01-02</td>
+            <td>85</td>
+           </tr>
+           <tr>
+            <td>1</td>
+            <td>공지사항 제목 1</td>
+            <td><input type="button" value="바로가기"></td>
+            <td>xm123</td>
+            <td>2020-12-24</td>
+            <td>124</td>
+           </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">전체공지사항 갯수</td>
+                <td colspan="2">5개</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
