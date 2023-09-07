@@ -1,0 +1,67 @@
+
+.login-page {
+    width: 440px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 0 auto;
+    text-align: center;
+    /* 요소를 화면 가운데로 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+}
+        
+        /* 로그인 박스 스타일 설정 */
+        .login-box {
+            width: 340px;
+            height: 280px;
+            border-radius: 30px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 로그인 입력란 스타일 설정 */
+        .login-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        /* 로그인 버튼 스타일 설정 */
+        .login-button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
+            display: block;
+            background-color: #FF7F38;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .login-box img {
+            width: 65%;
+            height: 70%;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
