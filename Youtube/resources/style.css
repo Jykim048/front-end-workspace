@@ -1,0 +1,249 @@
+a {
+    text-decoration: none;
+    color: #000;
+}
+header {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    height: 56px;
+    justify-content: space-between;
+}
+header * {
+    display: flex;
+    align-items: center;
+}
+.header-start {
+    margin: 10px;
+}
+.header-start i {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    color: #666;
+}
+.header-start a {
+    height: 100%;
+}
+.header-start a svg {
+   padding: 20px 10px;
+}
+.header-center {
+  flex: 1;
+  justify-content: flex-end;
+}
+.header-center input {
+    display: none;
+}
+.header-center button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+.header-end {
+    margin: 20px;
+}
+
+.header-end button {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 50px;
+    color: #065fd4;
+    font-size: 1rem;
+}
+.header-end button i {
+    margin-right: 5px;
+}
+
+main {
+    padding-top: 56px;
+    display: flex;
+}
+aside {
+    display: none;
+    position: fixed;
+    background-color: white;
+    width: 70px;
+    overflow-y: auto;
+    height: 100%;
+}
+aside::-webkit-scrollbar {
+    width: 10px;
+}
+aside::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 10px;
+}
+aside::-webkit-scrollbar-track {
+    background-color: white;
+}
+.aside-change aside {
+   width: 70px;
+}
+.aside-change aside a {
+    flex-direction: column;
+}
+.aside-change aside a p {
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+.aside-change .main-content {
+    padding-left: 70px;
+}
+.aside-change .aside-category {
+    display: none;
+}
+.aside-change footer {
+    display: none;
+}
+aside a {
+   display: block;
+   text-align: center;
+   padding: 10px;
+   border-radius: 5px;
+   margin: 10px;
+}
+aside a:hover {
+    background-color: #eee;
+}
+aside a p {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+.aside-category, footer {
+    display: none;
+}
+.main-content {
+    padding-left: 70px;
+}
+nav {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 56px;
+    z-index: 1;
+    padding-left: 15px;
+}
+nav a {
+   background-color: #eee;
+   padding: 5px 10px;
+   border-radius: 5px;
+   line-height: 56px;
+   margin: 5px;
+}
+nav a.active {
+    background-color: black;
+    color: white;
+}
+section {
+    padding-top: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.video-content {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px;
+    margin-top: 20px;
+}
+.video-content video {
+    border-radius: 15px;
+    height: 220px;
+    object-fit: cover;
+}
+.video-summary {
+    display: flex;
+    margin-top: 10px;
+}
+.video-summary img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.video-desc h3 {
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.video-desc p {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.2;
+}
+
+@media screen and (min-width: 600px) {
+    .header-center {
+        justify-content: center;
+    }
+    .header-center input {
+        display: block;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        width: 100%;
+        max-width: 400px;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+    }
+    .header-center button {
+        border: 1px solid #ddd;
+        border-left: none;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        background-color: #eee;
+        padding: 8px 20px;
+    }
+}
+
+@media screen and (min-width: 927px) {
+    aside {
+        display: block;
+    }
+    section {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    aside {
+        width: 200px;
+    }
+    aside a {
+        display: flex;
+    }
+    aside a i {
+        width: 30px;
+        margin-right: 20px;
+    }
+    aside a p {
+        margin-top: 0;
+        font-size: 1rem;
+    }
+    .main-content {
+        padding-left: 200px;
+    }
+    .aside-category {
+        display: block;
+    }
+    .aside-category h2 {
+        margin: 22px 22px 0;
+    }
+    footer {
+        display: block;
+        margin: 22px;
+    }
+    .video-content {
+        max-width: 390px;
+    }
+   
+}

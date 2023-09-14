@@ -11,8 +11,8 @@
     position: relative;
 }
 .sign_up{
-    width: 300px;
-    height: 50px;
+    width: 350px;
+    height: 60px;
     background: #FF7F38;
     border: 1px solid #FF7F38;
     border-radius: 5px;
@@ -30,7 +30,7 @@ div{
 }
 
 .box {
-    width: 400px; 
+    width: 500px; 
     height: auto; 
     background-color: #f0f0f0;
     border: 1px solid #ddd;
@@ -38,3 +38,12 @@ div{
     padding: 20px; 
     margin: 0 auto; 
 }
+
+.input-with-button input {
+    flex: 1; /* 남은 공간 모두 차지 */
+}
+
+.input-with-button button {
+    margin-left: 10px; /* 버튼과 입력창 사이 간격 조절 */
+}
+

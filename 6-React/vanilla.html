@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Counter</title>
+</head>
+<body>
+   <h1>Total clicks : <span>0</span></h1>
+   <button onclick="setCount()">Click!</button>
+
+    <script>
+       const span = document.querySelector("span");
+       const setCount = () => {
+        span.innerHTML = parseInt(span.innerHTML) + 1;
+       };
+    </script>
+</body>
+</html>

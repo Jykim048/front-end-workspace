@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 관리</title>
+    <link rel="stylesheet" href="css/회원정보-관리.css">
+</head>
+<body>
+    <div class="box">
+        <h1 align="center">회원정보 관리</h1>
+        <hr>
+        <div class="member_list">
+            <table class="admin_board_wrap">
+                <thead>
+                    <tr>
+                        <th class="admin_board_head">이름</th>
+                        <th class="admin_board_head">아이디</th>
+                        <th class="admin_board_head">전화번호</th>
+                        <th class="admin_board_head">가입일</th>
+                        <th class="admin_board_head">게시글수</th>
+                        <th class="admin_board_head">댓글수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="admin_board_content">
+                        <td class="admin_board_content_nm"><a href="#" class="mypage">김준영</a></td>
+                        <td class="admin_board_content_nm">jy</td>
+                        <td class="admin_board_content_nm">010-1234-5678</td>
+                        <td class="admin_board_content_nm">2023.09.07</td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_boardList_admin">32</a></td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_reply_admin">22</a></td>
+                    </tr>
+                    <tr class="admin_board_content">
+                        <td class="admin_board_content_nm"><a href="#" class="mypage">가가가</a></td>
+                        <td class="admin_board_content_nm">wefwef</td>
+                        <td class="admin_board_content_nm">010-3333-3333</td>
+                        <td class="admin_board_content_nm">2023.09.07</td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_boardList_admin">4</a></td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_reply_admin">2</a></td>
+                      </tr>
+                      <tr class="admin_board_content">
+                        <td class="admin_board_content_nm"><a href="#" class="mypageModal"></a>나나나</td>
+                        <td class="admin_board_content_nm">nana</td>
+                        <td class="admin_board_content_nm">010-5454-6666</td>
+                        <td class="admin_board_content_nm">2022.03.07</td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_boardList_admin">31</a></td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_reply_admin">24</a></td>
+                      </tr>
+                      <tr class="admin_board_content">
+                        <td class="admin_board_content_nm"><a href="#" class="mypage">다다다</a></td>
+                        <td class="admin_board_content_nm">dada</td>
+                        <td class="admin_board_content_nm">010-8888-8888</td>
+                        <td class="admin_board_content_nm">2022.03.03</td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_boardList_admin">11</a></td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_reply_admin">5</a></td>
+                      </tr>
+                      <tr class="admin_board_content">
+                        <td class="admin_board_content_nm"><a href="#" class="mypageModal">라라라</a></td>
+                        <td class="admin_board_content_nm">lala</td>
+                        <td class="admin_board_content_nm">010-2222-2222</td>
+                        <td class="admin_board_content_nm">2022.03.07</td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_boardList_admin">4</a></td>
+                        <td class="admin_board_content_nm"><a href="#" class="modal_reply_admin">5</a></td>
+                      </tr>
+                </tbody>
+            </table>
+
+            <!-- 페이징 버튼 -->
+            <div id="paging">
+                <br>
+                <a href="#" class="prev" title="이전페이지">◀ 이전 </a>
+                <span class="num">1</span>
+                <span class="num">2</span>
+                <span class="num">3</span>
+                <a href="#" class="next" title="다음페이지"> 다음 ▶</a>
+                <br />&nbsp;
+            </div>
+        </div>
+        <ul class="admin option">
+            <li><a href="#"> 공지 사항</a></li>
+            <li><a href="#"> 회원 관리</a></li>
+            <li><a href="#"> 게시판 관리</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -5,14 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>팀프로젝트-회원가입</title>
     <link rel="stylesheet" href="css/팀프로젝트-회원가입.css">
+    <script>
+        // 전화번호 입력란 - 자동삽입
+        function formatPhoneNumber(input) {
+            var phoneNumber = input.value.replace(/\D/g, '');
+            
+            if (phoneNumber.length === 11) {
+                input.value = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+            }
+        }
+    </script>
+    <style>
+        .box {
+            max-height: 700px; /* 스크롤 가능한 최대 높이 */
+            overflow-y: auto; /* 세로 스크롤 활성화 */
+        }
+    </style>
 </head>
+
 <body>
     <div class="box">
     <h1 align="center">회원가입 </h1>
         <hr>
         <div>
             <b class="name">아이디</b><br>
-            <input class="text" type="text" name="UserID" placeholder="아이디"><br><br>
+            <input class="text" type="text" name="UserID" placeholder="아이디">
+            <button type="button" onclick="checkUsername()">중복 확인</button>
+            <p id="usernameMessage"></p>
         </div>
         <div>
             <b class="name">비밀번호</b><br>
@@ -20,21 +39,98 @@
         </div>
         <div>
             <b class="name">비밀번호 확인</b><br>
-            <input class="text" type="password" name="PW" placeholder="비밀번호 확인"><br><br>
+            <input class="text" type="password" name="PWcheck" placeholder="비밀번호 확인"><br><br>
         </div>
         <div>
-            <b class="name">전화번호</b><br>
-            <input class="text" type="phone" name="phone" placeholder="전화번호" maxlength="11"><br><br><br>
+            <b class="name">이름</b><br>
+            <input class="text" type="name" name="name" placeholder="이름"><br><br>
+        </div>
+        <div>
+            <b class="name">닉네임</b><br>
+            <input class="text" type="nickname" name="nickname" placeholder="닉네임"><br><br>
         </div>
         
         <div>
-            <b class="name">이메일</b><br>
-            <input class="text" type="email" name="email" placeholder="이메일"><br><br><br>
-        </div>
+            <div>
+                <b class="name">전화번호</b><br>
+                <input class="text" type="text" name="phone" placeholder="-없이 숫자만 입력하세요" oninput="formatPhoneNumber(this)" maxlength="11">
+                <br>
+                <br>
 
-        <div>
-            <input type="checkbox"> 이메일 수신 동의
         </div>
+        <div>
+            <b class="name">이메일</b><br>
+            <input class="text" type="email" name="email" placeholder="이메일"><br>
+            <input type="checkbox"> 이메일 수신 동의
+            <br>
+            <br>
+        </div>
+        <div>
+            <label for="birthDate">생일</label>
+            <input id="birthDate" class="text" type="date" required>
+        </div>
+        <br>
+        <div>
+            <label for="gender">성별</label>
+            <select id="gender" class="text">
+                <option value="">선택하세요</option>
+                <option value="남자">남자</option>
+                <option value="여자">여자</option>
+            </select>
+        <div>
+        <br>
+        <div>
+            <label for="location">지역</label>
+            <select id="location" class="text">
+                <option value="">선택하세요</option>
+                <option value="서울">서울</option>
+                <option value="인천">인천</option>
+                <option value="경기">경기</option>
+                <option value="강원">강원</option>
+                <option value="충북">충북</option>
+                <option value="충남">충남</option>
+                <option value="대구">대구</option>
+                <option value="경북">경북</option>
+                <option value="부산">부산</option>
+                <option value="울산">울산</option>
+                <option value="광주">광주</option>
+                <option value="대전">대전</option>
+                <option value="전북">전북</option>
+                <option value="전남">전남</option>
+                <option value="제주">제주</option>
+                <option value="기타">기타(해외 등)</option>
+            </select>
+        </div>
+        <br>
+        
+        <div>
+            <label for="mbti">MBTI</label>
+            <select id="mbti" class="text">
+                <option value="">선택하세요</option>
+                <option value="INFJ">INFJ</option>
+                <option value="INFP">INFP</option>
+                <option value="ISFJ">ISFJ</option>
+                <option value="ISFP">ISFP</option>
+                <option value="ISTP">ISTP</option>
+                <option value="ISTJ">ISTJ</option>
+                <option value="INTP">INTP</option>
+                <option value="INTJ">INTJ</option>
+                <option value="ENTP">ENTP</option>
+                <option value="ESTJ">ESTJ</option>
+                <option value="ESTP">ESTP</option>
+                <option value="ENFP">ENFP</option>
+                <option value="ESFJ">ESFJ</option>
+                <option value="ENTJ">ENTJ</option>
+                <option value="ENFJ">ENFJ</option>
+                <option value="ESFP">ESFP</option>
+            </select>
+            <br>
+            <br>
+            <div>
+                <label for="hobby">관심</label>
+                <select id="hobby" class="text">
+                    <option value="">선택하세요</option>
+                </select>
         <div>
             <button class="sign_up" type="button">가입하기</button>
         </div>
