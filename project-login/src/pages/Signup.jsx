@@ -140,6 +140,14 @@ function SignUp() {
     setSelectedBloodType(e.target.value);
   };
 
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+
+  const handleMbtiChange = (e) => {
+    setMbti(e.target.value);
+  };
+
 
   return (
     <>
@@ -233,6 +241,7 @@ function SignUp() {
                 <label htmlFor="female">여</label>
               </div>
             </div>
+            <br></br>
 
             <div className="blood-type">
               <label>혈액형</label> <br />
@@ -242,12 +251,69 @@ function SignUp() {
                 value={selectedBloodType}
                 onChange={handleBloodTypeChange}
               >
+                <option value="">선택하세요</option>
                 <option value="A">A형</option>
                 <option value="B">B형</option>
                 <option value="AB">AB형</option>
                 <option value="O">O형</option>
               </select>
             </div>
+          </div>
+
+          <div className="form-el select-for-location">
+            <label htmlFor="location">지역</label> <br />
+            <select
+              id="location"
+              name="location"
+              value={location}
+              onChange={handleLocationChange}
+            >
+              <option value="">선택하세요</option>
+              <option value="서울">서울</option>
+              <option value="인천">인천</option>
+              <option value="경기">경기</option>
+              <option value="강원">강원</option>
+              <option value="충북">충북</option>
+              <option value="충남">충남</option>
+              <option value="대구">대구</option>
+              <option value="경북">경북</option>
+              <option value="부산">부산</option>
+              <option value="울산">울산</option>
+              <option value="광주">광주</option>
+              <option value="대전">대전</option>
+              <option value="전북">전북</option>
+              <option value="전남">전남</option>
+              <option value="제주">제주</option>
+              <option value="기타">기타(해외 등)</option>
+            </select>
+          </div>
+
+          <div className="form-el select-for-mbti">
+            <label htmlFor="mbti">MBTI</label> <br />
+            <select
+              id="mbti"
+              name="mbti"
+              value={mbti}
+              onChange={handleMbtiChange}
+            >
+              <option value="">선택하세요</option>
+              <option value="ISTJ">ISTJ</option>
+              <option value="ISFJ">ISFJ</option>
+              <option value="INFJ">INFJ</option>
+              <option value="INTJ">INTJ</option>
+              <option value="ISTP">ISTP</option>
+              <option value="ISFP">ISFP</option>
+              <option value="INFP">INFP</option>
+              <option value="INTP">INTP</option>
+              <option value="ESTP">ESTP</option>
+              <option value="ESFP">ESFP</option>
+              <option value="ENFP">ENFP</option>
+              <option value="ENTP">ENTP</option>
+              <option value="ESTJ">ESTJ</option>
+              <option value="ESFJ">ESFJ</option>
+              <option value="ENFJ">ENFJ</option>
+              <option value="ENTJ">ENTJ</option>
+            </select>
           </div>
 
 

@@ -77,10 +77,11 @@ button[type="submit"]:disabled {
   margin-bottom: 20px; 
 }
 
-.form-container { /* 스크롤 */
-  max-height: 1200px; /*높이 */
+/* .form-container { 
+  max-height: 1200px; 
   overflow-y: auto; 
-}
+} */
+/* 스크롤바 관련 */
 
 .form-el.label-for-gender {
   margin-top: 16px; /* 간격 조절 */
@@ -117,7 +118,18 @@ button[type="submit"]:disabled {
   outline: none;
 }
 
+/* 지역 선택창 조정 */
+.form-el select#location {
+  width: 30%; 
+}
+
+.form-el select#mbti {
+  width: 30%; 
+}
+
 .form-el select:focus {
   border: 1px solid #FF9615;
 }
+
+
 
