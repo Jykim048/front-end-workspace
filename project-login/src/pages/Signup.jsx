@@ -33,7 +33,7 @@ function SignUp() {
   const [isPasswordConfirm, setIsPasswordConfirm] = React.useState(false);
   const [isEmail, setIsEmail] = React.useState(false);
   const [isPhone, setIsPhone] = React.useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -44,7 +44,7 @@ function SignUp() {
       setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
       setIsId(false);
     } else {
-      setIdMessage("사용가능한 아이디 입니다.");
+      setIdMessage("");
       setIsId(true);
     }
   };
@@ -57,7 +57,7 @@ function SignUp() {
       setNameMessage("닉네임은 2글자 이상 8글자 이하로 입력해주세요.");
       setIsName(false);
     } else {
-      setNameMessage("사용가능한 닉네임 입니다.");
+      setNameMessage("");
       setIsName(true);
     }
   };
@@ -73,7 +73,7 @@ function SignUp() {
       );
       setIsPassword(false);
     } else {
-      setPasswordMessage("사용 가능한 비밀번호 입니다.");
+      setPasswordMessage("");
       setIsPassword(true);
     }
   };
@@ -84,7 +84,7 @@ function SignUp() {
       setPasswordConfirmMessage("비밀번호가 같지 않습니다.");
       setIsPasswordConfirm(false);
     } else {
-      setPasswordConfirmMessage("같은 비밀번호를 입력했습니다.");
+      setPasswordConfirmMessage("");
       setIsPasswordConfirm(true);
     }
   };
@@ -98,7 +98,7 @@ function SignUp() {
       setEmailMessage("이메일의 형식이 올바르지 않습니다.");
       setIsEmail(false);
     } else {
-      setEmailMessage("사용 가능한 이메일입니다.");
+      setEmailMessage("");
       setIsEmail(true);
     }
   };
@@ -111,7 +111,7 @@ function SignUp() {
       setPhoneMessage("올바른 형식이 아닙니다.");
       setIsPhone(false);
     } else {
-      setPhoneMessage("사용 가능한 번호입니다.");
+      setPhoneMessage("");
       setIsPhone(true);
     }
   };
@@ -148,6 +148,10 @@ function SignUp() {
     setMbti(e.target.value);
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <>
@@ -172,11 +176,19 @@ function SignUp() {
             <input
               id="password"
               name="password"
+              type={showPassword ? "text" : "password"} // 비밀번호 보이기 여부에 따라 타입 변경
               value={password}
-              onChange={onChangePassword}
-            />
-            <p className="message">{passwordMessage}</p>
-          </div>
+              onChange={onChangePassword}/>
+            <button
+            type="button"
+            onClick={toggleShowPassword}
+            className="show-password-button"
+          >
+            {showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
+          </button>
+          <p className="message">{passwordMessage}</p>
+        </div>
+
           <div className="form-el">
             <label htmlFor="passwordConfirm">비밀번호 확인</label> <br />
             <input

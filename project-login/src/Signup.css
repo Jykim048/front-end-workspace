@@ -131,5 +131,6 @@ button[type="submit"]:disabled {
   border: 1px solid #FF9615;
 }
 
-
-
+.blue-text {
+  color: blue;
+}
