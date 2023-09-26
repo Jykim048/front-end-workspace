@@ -121,6 +121,7 @@ button[type="submit"]:disabled {
 /* 지역 선택창 조정 */
 .form-el select#location {
   width: 30%; 
+  
 }
 
 .form-el select#mbti {
@@ -131,6 +132,27 @@ button[type="submit"]:disabled {
   border: 1px solid #FF9615;
 }
 
-.blue-text {
-  color: blue;
+
+
+.selectlike-box {  /* 관심주제 설정 관련 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  border-top: 1px solid #ccc;
+  padding-top: 16px;
+  
+}
+
+.selectlike-box-item {
+  font-style: inherit;
+  margin: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.selectlike-box-item.selected {
+  background-color: #FF9615; 
 }

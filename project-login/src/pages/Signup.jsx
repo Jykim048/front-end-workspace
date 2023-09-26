@@ -16,6 +16,9 @@ function SignUp() {
   const [location, setLocation] = useState('');
   const [mbti, setMbti] = useState('');
 
+  const [selectlike, setSelectlike] = useState([]); // 관심사
+
+
   // 알림창(에러 메시지)
   const [idMessage, setIdMessage] = React.useState("");
   const [nameMessage, setNameMessage] = React.useState("");
@@ -152,11 +155,37 @@ function SignUp() {
     setShowPassword(!showPassword);
   };
 
+  const interestCategories = [
+    {
+      name: '엔터테인먼트 & 예술',
+      options: ['영화', '드라마', '음악', '미술'],
+    },
+
+    {
+      name: '스포츠',
+      options: ['축구', '야구', '농구', '서핑', '수영', '볼링', '러닝 & 산책', '헬스', '클라이밍', '테니스', '스키'],
+    },
+
+    {
+      name: '게임',
+      options: ['롤', '피파', '스타', '메이플', '배그', '스팀 게임', '던파', '오버워치'],
+    },
+
+  ];
+
+  const handleInterestClick = (interest) => {
+    if (selectlike.includes(interest)) {
+      setSelectlike(selectlike.filter((item) => item !== interest));
+    } else {
+      setSelectlike([...selectlike, interest]);
+    }
+  };
 
   return (
     <>
       <div className="form-container">
-        <img src="/elephant.png" alt="로고" style={{ width: '150px', height: 'auto' }} />
+        <img src="/elephant.png" alt="로고이미지" style={{ width: '100px', height: 'auto' }} />
+        <img src="/title.jpg" alt="타이틀" style={{ width: '150px', height: 'auto',  marginTop: '-200px' }} />
 
         <h3></h3>
         <div className="form">
@@ -178,16 +207,16 @@ function SignUp() {
               name="password"
               type={showPassword ? "text" : "password"} // 비밀번호 보이기 여부에 따라 타입 변경
               value={password}
-              onChange={onChangePassword}/>
+              onChange={onChangePassword} />
             <button
-            type="button"
-            onClick={toggleShowPassword}
-            className="show-password-button"
-          >
-            {showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
-          </button>
-          <p className="message">{passwordMessage}</p>
-        </div>
+              type="button"
+              onClick={toggleShowPassword}
+              className="show-password-button"
+            >
+              {showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
+            </button>
+            <p className="message">{passwordMessage}</p>
+          </div>
 
           <div className="form-el">
             <label htmlFor="passwordConfirm">비밀번호 확인</label> <br />
@@ -327,7 +356,31 @@ function SignUp() {
               <option value="ENTJ">ENTJ</option>
             </select>
           </div>
+          <br></br>
 
+          <div class="interest-section">
+          <div className="form-el">
+            <label>관심 주제 설정</label>
+            <br />
+            {interestCategories.map((category) => (
+              <div key={category.name}>
+                <div className="interest-category">{category.name}</div>
+                <div className="selectlike-box">
+                  {category.options.map((interest) => (
+                    <div
+                      key={interest}
+                      className={`selectlike-box-item ${selectlike.includes(interest) ? 'selected' : ''
+                        }`}
+                      onClick={() => handleInterestClick(interest)}
+                    >
+                      {interest}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          </div>
 
 
 
