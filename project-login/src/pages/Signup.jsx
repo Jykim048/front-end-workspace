@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 function SignUp() {
 
   const [id, setId] = useState("");
+  const [isIdAvailable, setIsIdAvailable] = useState(true);
+  const [isNameAvailable, setIsNameAvailable] = useState(true);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -15,7 +17,6 @@ function SignUp() {
   const [selectedBloodType, setSelectedBloodType] = useState('');
   const [location, setLocation] = useState('');
   const [mbti, setMbti] = useState('');
-
   const [selectlike, setSelectlike] = useState([]); // 관심사
 
 
@@ -23,8 +24,7 @@ function SignUp() {
   const [idMessage, setIdMessage] = React.useState("");
   const [nameMessage, setNameMessage] = React.useState("");
   const [passwordMessage, setPasswordMessage] = React.useState("");
-  const [passwordConfirmMessage, setPasswordConfirmMessage] =
-    React.useState("");
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = React.useState("");
   const [emailMessage, setEmailMessage] = React.useState("");
   const [phoneMessage, setPhoneMessage] = React.useState("");
   const [birthMessage, setBirthMessage] = React.useState("");
@@ -44,12 +44,29 @@ function SignUp() {
     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
 
     if (!idRegExp.test(currentId)) {
-      setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
       setIsId(false);
+      setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
+
     } else {
-      setIdMessage("");
       setIsId(true);
+      setIdMessage("");
     }
+  };
+
+  // 아이디 중복 확인
+  const checkIdDuplicate = (currentId) => {
+    fetch(`/api/checkDuplicate?id=${currentId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.isAvailable) {
+          setIsIdAvailable(true);
+          setIdMessage("사용 가능한 아이디입니다.");
+        } else {
+          setIsIdAvailable(false);
+          setIdMessage("이미 사용 중인 아이디입니다.");
+        }
+      })
+      .catch(error => console.error(error));
   };
 
   const onChangeName = (e) => {
@@ -64,6 +81,23 @@ function SignUp() {
       setIsName(true);
     }
   };
+
+  // 닉네임 중복 확인 
+  const CheckNicknameDuplicate = () => {
+    fetch(`/api/checkNicknameDuplicate?nickname=${name}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.isAvailable) {
+          setIsNameAvailable(true);
+          alert("사용 가능한 닉네임입니다.");
+        } else {
+          setIsNameAvailable(false);
+          alert("이미 사용 중인 닉네임입니다.");
+        }
+      })
+      .catch(error => console.error(error));
+  };
+
 
   const onChangePassword = (e) => {
     const currentPassword = e.target.value;
@@ -185,21 +219,26 @@ function SignUp() {
     <>
       <div className="form-container">
         <img src="/elephant.png" alt="로고이미지" style={{ width: '100px', height: 'auto' }} />
-        <img src="/title.jpg" alt="타이틀" style={{ width: '150px', height: 'auto',  marginTop: '-200px' }} />
+        <img src="/title.jpg" alt="타이틀" style={{ width: '150px', height: 'auto', marginTop: '-200px' }} />
 
         <h3></h3>
         <div className="form">
           <div className="form-el">
             <label htmlFor="id">아이디</label> <br />
-            <input id="id" name="id" value={id} onChange={onChangeId} />
-            <p className="message"> {idMessage} </p>
+            <input id="id" name="id" value={id} onChange={onChangeId} onBlur={() => checkIdDuplicate(id)} />
+            {!isIdAvailable && <p>{idMessage}</p>}
           </div>
 
           <div className="form-el">
             <label htmlFor="name">닉네임</label> <br />
             <input id="name" name="name" value={name} onChange={onChangeName} />
+            <br></br>
+            <button onClick={CheckNicknameDuplicate}>중복 확인</button>
+            {!isNameAvailable && <p>이미 사용 중인 닉네임입니다.</p>}
             <p className="message">{nameMessage}</p>
           </div>
+
+
           <div className="form-el">
             <label htmlFor="password">비밀번호</label> <br />
             <input
@@ -208,6 +247,7 @@ function SignUp() {
               type={showPassword ? "text" : "password"} // 비밀번호 보이기 여부에 따라 타입 변경
               value={password}
               onChange={onChangePassword} />
+              <br></br>
             <button
               type="button"
               onClick={toggleShowPassword}
@@ -228,6 +268,8 @@ function SignUp() {
             />
             <p className="message">{passwordConfirmMessage}</p>
           </div>
+
+
           <div className="form-el">
             <label htmlFor="email">이메일</label> <br />
             <input
@@ -238,11 +280,15 @@ function SignUp() {
             />
             <p className="message">{emailMessage}</p>
           </div>
+
+
           <div className="form-el">
             <label htmlFor="phone">휴대전화번호</label> <br />
             <input id="phone" name="phone" value={phone} onChange={addHyphen} />
             <p className="message">{phoneMessage}</p>
           </div>
+
+
           <div className="form-el">
             <label htmlFor="birth">생일</label> <br />
             <input
@@ -359,27 +405,27 @@ function SignUp() {
           <br></br>
 
           <div class="interest-section">
-          <div className="form-el">
-            <label>관심 주제 설정</label>
-            <br />
-            {interestCategories.map((category) => (
-              <div key={category.name}>
-                <div className="interest-category">{category.name}</div>
-                <div className="selectlike-box">
-                  {category.options.map((interest) => (
-                    <div
-                      key={interest}
-                      className={`selectlike-box-item ${selectlike.includes(interest) ? 'selected' : ''
-                        }`}
-                      onClick={() => handleInterestClick(interest)}
-                    >
-                      {interest}
-                    </div>
-                  ))}
+            <div className="form-el">
+              <label>관심 주제 설정</label>
+              <br />
+              {interestCategories.map((category) => (
+                <div key={category.name}>
+                  <div className="interest-category">{category.name}</div>
+                  <div className="selectlike-box">
+                    {category.options.map((interest) => (
+                      <div
+                        key={interest}
+                        className={`selectlike-box-item ${selectlike.includes(interest) ? 'selected' : ''
+                          }`}
+                        onClick={() => handleInterestClick(interest)}
+                      >
+                        {interest}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
 
 
