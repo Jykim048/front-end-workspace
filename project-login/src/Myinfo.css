@@ -1,0 +1,27 @@
+.user-info-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    /* 표 위 간격 */
+}
+
+.user-info-table th,
+.user-info-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: white;
+}
+
+.category-buttons {
+    text-align: center; /* 가로 중앙 정렬 */
+    margin-top: 300px;
+  }
+
+ .category-buttons button {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    text-align: center;
+    
+
+  }
