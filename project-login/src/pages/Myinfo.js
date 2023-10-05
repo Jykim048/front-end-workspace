@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import '../Myinfo.css';
-import Signup from './Signup';
+import Paging from '../components/Paging';
 
 const UserInfoPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageItem = 7; // 페이지당 표시할 아이템 수
+  const itemsPerPage = 10;
   const categories = [
     '회원정보 변경',
     '내가 쓴 글',
     '내가 쓴 댓글',
     '좋아요 한 글',
     '좋아요 한 댓글',
+    '스크랩 한 글',
     '차단한 사용자',
   ];
   const [categoryData, setCategoryData] = useState([]);
+  const [userCategoryData, setUserCategoryData] = useState([]); // 내정보 카테고리 데이터
 
   // 예시 더미 데이터
   useEffect(() => {
-    const data = Array.from({ length: 50 }, (_, i) => `데이터 ${i + 1}`);
+    const data = Array.from({ length: 250 }, (_, i) => `데이터 ${i + 1}`);
     setCategoryData(data);
   }, []);
 
@@ -28,22 +30,27 @@ const UserInfoPage = () => {
     }
     setSelectedCategory(category);
     setCurrentPage(1); // 새 카테고리 선택 시 1로 리셋
+
+    // 선택한 카테고리에 해당하는 데이터를 userCategoryData에 저장
+    const filteredData = categoryData.filter((item) => item.includes(category));
+    setUserCategoryData(filteredData);
   };
 
-  const indexOfLastItem = currentPage * pageItem;
-  const indexOfFirstItem = indexOfLastItem - pageItem;
-  const currentItems = categoryData.slice(indexOfFirstItem, indexOfLastItem);
-
-  // 페이지 변경 함수
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = userCategoryData.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="category-page">
       <div className="category-buttons">
         {categories.map((category, index) => (
-          <button key={index} onClick={() => handleCategoryClick(category)}>
+          <button
+            key={index}
+            onClick={() => handleCategoryClick(category)}
+            style={{
+              backgroundColor: selectedCategory === category ? '#FF9615' : 'white',
+            }}
+          >
             {category}
           </button>
         ))}
@@ -66,21 +73,20 @@ const UserInfoPage = () => {
                 ))}
               </tbody>
             </table>
-            {/* 페이지네이션 컴포넌트 */}
-            <div className="pagination">
-              {Array.from({ length: Math.ceil(categoryData.length / pageItem) }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => handlePageChange(i + 1)}
-                  className={currentPage === i + 1 ? 'active' : ''}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
           </div>
         )}
       </div>
+
+      {selectedCategory && (
+        <div className="pagination">
+          <Paging
+            totalItems={userCategoryData.length}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        </div>
+      )}
     </div>
   );
 };

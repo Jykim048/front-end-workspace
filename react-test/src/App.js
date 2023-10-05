@@ -5,17 +5,17 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 // 1
-const Home = ({list, deleteMovie}) => {
+const Home = ({list, deleteMessage}) => {
   return(
     <>
-      <h1>Movies</h1>
+      <h1>Messages</h1>
       <table>
         <thead>
         <tr>
           <th>Id</th>
-          <th width="80">Title</th>
-          <th>Genre</th>
-          <th width="120">Release Date</th>
+          <th width="80">Writer</th>
+          <th>Message</th>
+          <th width="120">Write Date</th>
           <th>Action</th>
         </tr>
         </thead>
@@ -23,9 +23,9 @@ const Home = ({list, deleteMovie}) => {
           {list.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>{item.genre}</td>
-              <td>{item.releaseDate}</td>
+              <td>{item.writer}</td>
+              <td>{item.content}</td>
+              <td>{item.writeDate}</td>
               <td>
                 <button>Delete</button>
               </td>
@@ -36,100 +36,94 @@ const Home = ({list, deleteMovie}) => {
     </>
   )
 };
-const Create = ({addMovie}) => {
+const Create = ({addMessage}) => {
   //8
   const [id, setId] = useState("");
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
+  const [writer, setWriter] = useState("");
+  const [content, setContent] = useState("");
+  const [writeDate, setWriteDate] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
 
       //9 
-    if(id === "" || title === "" || genre === "" || releaseDate === "") {
+    if(id === "" || writer === "" || content === "" || writeDate === "") {
       alert("모든 입력값을 반드시 입력해야 합니다");
       return;
     }
     //9
 
-    addMovie(id, title, genre, releaseDate);
+    addMessage(id, writer, content, writeDate);
     setId("");
-    setTitle("");
-    setGenre("");
-    setReleaseDate("");
+    setWriter("");
+    setContent("");
+    setWriteDate("");
   };
   //8
 
   return (
   <>
-    <h1>Create Movie</h1>
+    <h1>Create Message</h1>
     <form onSubmit={onSubmit}>
       <div>
-        <input type="text" placeholder="Input movie id" value={id} onChange={(e) => setId(e.target.value)} 
+        <input type="text" placeholder="Input message id" value={id} onChange={(e) => setId(e.target.value)} 
         />
       </div>
       <div>
-      <input type="text" placeholder="Input movie title" value={title} onChange={(e) => setTitle(e.target.value)}  />
+      <input type="text" placeholder="Input message writer" value={writer} onChange={(e) => setWriter(e.target.value)}  />
       </div>
       <div>
-      <input type="text" placeholder="Input movie genre" value={genre} onChange={(e) => setGenre(e.target.value)}  />
+      <input type="text" placeholder="Input message content" value={content} onChange={(e) => setContent(e.target.value)}  />
       </div>
       <div>
-        <label>출시일 : </label>
-        <input type="date" value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+        <label>작성일 : </label>
+        <input type="date" value={writeDate} onChange={(e) => setWriteDate(e.target.value)} />
       </div>
-      <input type="submit" value="Add movie" />
+      <input type="submit" value="Add Message" />
     </form>
   </>)
 };
 const App = () => {
 
    // 3, 7
-   const [movies, setMovies] = useState([
+   const [messages, setMessages] = useState([
     {
       id: 1,
-      title: "Movie 1",
-      genre: "Drama",
-      releaseDate: "2022-01-01",
+      title: "Message 1",
+      writer: "Writer 1",
+      writeDate: "2022-01-01",
     },
     {
-      title: "Movie 2",
-      genre: "Action",
-      releaseDate: "2022-02-01",
+      id: 2,
+      title: "Message 2",
+      writer: "Writer 2",
+      writeDate: "2022-02-01",
     },
     {
-      title: "Movie 3",
-      genre: "Comedy",
-      releaseDate: "2022-03-01",
+      id: 3,
+      title: "Message 3",
+      writer: "Writer 3",
+      writeDate: "2022-03-01",
     },
     //7
    ]);
 
-   const addMovie = (id, title, genre, releaseDate) => {
+   const addMessage = (id, writer, content, writeDate) => {
     // 10. 중복 ID 입력 불가
-    for(const item of movies) {
+    for(const item of messages) {
       if(item.id === parseInt(id)) {
         alert("중복되는 ID는 입력할수 없습니다");
         return;
       }
     }
 
-    // const result = movies.some((item) => {
-    //   return item.id === parseInt(id);
-    // });
-    // if(result) {
-    //   alert("중복되는 ID는 입력할수 없습니다");
-    //   return;
-    // }
-
-    const newMovie = {id: parseInt(id), title, genre, releaseDate };
-    setMovies([...movies, newMovie]);
+    const newMessage = {id: parseInt(id), writer, content, writeDate };
+    setMessages([...messages, newMessage]);
   };
 
-  const deleteMovie = (id) => {
-    const newList = movies.filter((item) => item.id !== parseInt(id));
-    setMovies(newList);
+  const deleteMessage = (id) => {
+    const newList = messages.filter((item) => item.id !== parseInt(id));
+    setMessages(newList);
   };
   //3
   return (
@@ -139,13 +133,13 @@ const App = () => {
       <Link to="/">List</Link>
     </li>
     <li>
-    <Link to="/create">Add New Movie</Link>
+    <Link to="/create">Add New Message</Link>
     </li>
   </ul>
    <Routes>
 
-      <Route path="/" element={<Home list={movies} deleteMovie={deleteMovie} />} />
-      <Route path="/create" element={<Create addMovie={addMovie} />} />
+      <Route path="/" element={<Home list={messages} deleteMessage={deleteMessage} />} />
+      <Route path="/create" element={<Create addMessage={addMessage} />} />
     </Routes> 
     </BrowserRouter>
   )
