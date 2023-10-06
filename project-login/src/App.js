@@ -5,7 +5,7 @@ import Myinfo from "./pages/Myinfo";
 function App() {
   return (
     <div>
-      <Signup />
+      <Myinfo />
     </div>
     
   );

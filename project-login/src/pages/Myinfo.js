@@ -18,7 +18,6 @@ const UserInfoPage = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [userCategoryData, setUserCategoryData] = useState([]); // 내정보 카테고리 데이터
 
-  // 예시 더미 데이터
   useEffect(() => {
     const data = Array.from({ length: 250 }, (_, i) => `데이터 ${i + 1}`);
     setCategoryData(data);
@@ -29,9 +28,8 @@ const UserInfoPage = () => {
       return;
     }
     setSelectedCategory(category);
-    setCurrentPage(1); // 새 카테고리 선택 시 1로 리셋
+    setCurrentPage(1);
 
-    // 선택한 카테고리에 해당하는 데이터를 userCategoryData에 저장
     const filteredData = categoryData.filter((item) => item.includes(category));
     setUserCategoryData(filteredData);
   };
@@ -56,7 +54,27 @@ const UserInfoPage = () => {
         ))}
       </div>
       <div className="selected-category">
-        {selectedCategory && (
+        {selectedCategory === '내가 쓴 글' ? (
+          <div>
+            <h2>{selectedCategory}</h2>
+            <table className="user-info-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>날짜</th>
+                  <th>내용</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
           <div>
             <h2>{selectedCategory}</h2>
             <table className="user-info-table">
