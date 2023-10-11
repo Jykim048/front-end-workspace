@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../Signup.css';
 
-function SignUp() {
+function EditProfile() {
   // 상태 변수들
   const [id, setId] = useState("");
   const [isIdAvailable, setIsIdAvailable] = useState(true);
@@ -129,11 +130,6 @@ function SignUp() {
     }
   };
 
-   // 비밀번호 보이기 토글 핸들러
-   const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
   // 이메일 입력 핸들러
   const onChangeEmail = (e) => {
     const currentEmail = e.target.value;
@@ -212,6 +208,10 @@ function SignUp() {
     }
   };
 
+  // 비밀번호 보이기 토글 핸들러
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const interestCategories = [
     {
@@ -230,56 +230,15 @@ function SignUp() {
     },
   ];
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // 폼 기본 제출 방지
-
-    // 모든 데이터를 서버로 전송하는 코드를 작성
-    const userData = {
-      id,
-      name,
-      password,
-      email,
-      phone,
-      birth,
-      selectedGender,
-      selectedBloodType,
-      location,
-      mbti,
-      selectlike,
-    };
-
-    // axios를 사용하여 서버로 데이터 전송
-    fetch('/api/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          alert('회원가입이 완료되었습니다.');
-        } else {
-          alert('회원가입에 실패했습니다.');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('오류가 발생했습니다. 다시 시도해주세요.');
-      });
-  };
-
-
   return (
     <>
       <div className="form-container">
         <img src="/elephant.png" alt="로고이미지" style={{ width: '100px', height: 'auto' }} />
         <img src="/title.jpg" alt="타이틀" style={{ width: '150px', height: 'auto', marginTop: '-200px' }} />
 
+        <h3></h3>
         <div className="form">
-          <div className="form-el">
+        <div className="form-el">
             <label htmlFor="id">아이디</label> <br />
             <input id="id" name="id" value={id} onChange={onChangeId} />
             <br></br>
@@ -287,7 +246,6 @@ function SignUp() {
             <p className="message">{idMessage}</p>
           </div>
 
-          {/* 닉네임 입력 양식 */}
           <div className="form-el">
             <label htmlFor="name">닉네임</label> <br />
             <input id="name" name="name" value={name} onChange={onChangeName} />
@@ -295,14 +253,14 @@ function SignUp() {
             {!isNameAvailable && <p>이미 사용 중인 닉네임입니다.</p>}
             <p className="message">{nameMessage}</p>
           </div>
+          
 
-          {/* 비밀번호 입력 양식 */}
           <div className="form-el">
             <label htmlFor="password">비밀번호</label> <br />
             <input
               id="password"
               name="password"
-              type={showPassword ? "text" : "password"} // 비밀번호 보이기 입력에 따라 변경
+              type={showPassword ? "text" : "password"} // 비밀번호 보이기 여부에 따라 타입 변경
               value={password}
               onChange={onChangePassword} />
               <br></br>
@@ -316,27 +274,17 @@ function SignUp() {
             <p className="message">{passwordMessage}</p>
           </div>
 
-          {/* 비밀번호 확인 입력 양식 */}
           <div className="form-el">
             <label htmlFor="passwordConfirm">비밀번호 확인</label> <br />
             <input
               id="passwordConfirm"
               name="passwordConfirm"
-              type={showPassword ? "text" : "password"}
               value={passwordConfirm}
-              onChange={onChangePasswordConfirm} />
-              <br></br>
-            <button
-              type="button"
-              onClick={toggleShowPassword}
-              className="show-password-button"
-            >
-              {showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
-            </button>
+              onChange={onChangePasswordConfirm}
+            />
             <p className="message">{passwordConfirmMessage}</p>
           </div>
 
-          {/* 이메일 입력 양식 */}
           <div className="form-el">
             <label htmlFor="email">이메일</label> <br />
             <input
@@ -348,14 +296,12 @@ function SignUp() {
             <p className="message">{emailMessage}</p>
           </div>
 
-          {/* 휴대전화번호 입력 양식 */}
           <div className="form-el">
             <label htmlFor="phone">휴대전화번호</label> <br />
             <input id="phone" name="phone" value={phone} onChange={addHyphen} />
             <p className="message">{phoneMessage}</p>
           </div>
 
-          {/* 생일 입력 양식 */}
           <div className="form-el">
             <label htmlFor="birth">생일</label> <br />
             <input
@@ -368,7 +314,6 @@ function SignUp() {
             <p className="message">{birthMessage}</p>
           </div>
 
-          {/* 성별 입력 양식 */}
           <div className="form-el">
             <label>성별</label> <br />
             <div className="gender-options">
@@ -397,7 +342,6 @@ function SignUp() {
             </div>
             <br></br>
 
-            {/* 혈액형 입력 양식 */}
             <div className="blood-type">
               <label>혈액형</label> <br />
               <select
@@ -415,7 +359,6 @@ function SignUp() {
             </div>
           </div>
 
-          {/* 지역 입력 양식 */}
           <div className="form-el select-for-location">
             <label htmlFor="location">지역</label> <br />
             <select
@@ -444,7 +387,6 @@ function SignUp() {
             </select>
           </div>
 
-          {/* MBTI 입력 양식 */}
           <div className="form-el select-for-mbti">
             <label htmlFor="mbti">MBTI</label> <br />
             <select
@@ -474,7 +416,6 @@ function SignUp() {
           </div>
           <br></br>
 
-          {/* 관심 주제 선택 양식 */}
           <div class="interest-section">
             <div className="form-el">
               <label>관심 주제 설정</label>
@@ -501,13 +442,11 @@ function SignUp() {
 
           <br />
           <br />
-          <form onSubmit={handleSubmit} className="signup-form">
-          <button type="submit">가입하기</button>
-          </form>
+          <button type="submit">회원 정보 수정</button>
         </div>
       </div>
     </>
   );
 }
 
-export default SignUp;
+export default EditProfile;
